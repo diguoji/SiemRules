@@ -1,0 +1,36 @@
+[metadata]
+creation_date = "2022/09/12"
+maturity = "development"
+updated_date = "2022/09/12"
+
+[rule]
+author = ["zhixiang.hao"]
+description = "hacker use tools attack"
+language = "eql"
+name = "hack tools"
+risk_score = 40
+rule_id = "c9849c18-8152-4663-af07-23bdd360e6d7"
+severity = "high"
+tags = ["tools", "hack", "attack", "exploit"]
+type = "eql"
+
+query = '''
+process where event.type in ("start", "process_started") and process.name in ("nmap.exe" , "zenmap.exe","Acunetix.exe","BurpSuitePro.exe","BurpSuite.exe","NTDSDumpEx.exe","procdump64.exe",
+"mimikatz.exe","appscan.exe","x-scan.exe","nbtscan.exe","arp-scan.exe","s.exe","K8PortScan.exe","Net-GPPPassword.exe","wmiexec.exe","wmipersist.exe","wmiquery.exe","enum.exe","hunter.exe","lg.exe","AdFind.exe",
+"dsquery.exe","GetADUsers.exe","wmiexec.exe","PVEFindADUser.exe","qs.exe","nuclei.exe")
+'''
+
+
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+[[rule.threat.technique]]
+id = "T1072"
+name = "Software Deployment Tools"
+reference = "https://attack.mitre.org/techniques/T1072/"
+
+
+[rule.threat.tactic]
+id = "TA0002"
+name = "Execution"
+reference = "https://attack.mitre.org/tactics/TA0002/"
+

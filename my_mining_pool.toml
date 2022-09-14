@@ -1,0 +1,20 @@
+[metadata]
+creation_date = "2022/09/14"
+maturity = "development"
+updated_date = "2022/09/14"
+
+[rule]
+author = ["zhixiang.hao"]
+description = "miner pool address"
+language = "eql"
+name = "mining pool"
+risk_score = 50
+rule_id = "8c733c0c-26c9-47a3-9147-a2c1ea16fe32"
+severity = "medium"
+tags = ["pool address"]
+type = "eql"
+
+query = '''
+network where network.protocol: ("tcp","udp","dns")  and dns.question.name :("*91pool.com*","*sparkpool.com*","*uupool.cn*","*ibichi.com*","*xnpool.cn*","*bw.com*","*beepool.org*","*pool.zhizhu.top*","*pandaminer.com*","*sparkpool.com*","*.ss.btc.com", "*.antpool.com","*.f2pool.com","*.poolbinance.com","*.poolin.com","*.vrflw.cc","*.btc.viabtc.io","*.foundryusapool.com","*.emcd.io","*.sbicrypto.com")
+'''
+

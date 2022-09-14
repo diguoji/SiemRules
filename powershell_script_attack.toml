@@ -1,0 +1,48 @@
+[metadata]
+creation_date = "2022/09/13"
+maturity = "development"
+updated_date = "2022/09/13"
+
+[rule]
+author = ["zhixiang.hao"]
+description = "malware powershell script"
+language = "eql"
+name = "malware powershell script"
+risk_score = 73
+rule_id = "3c4214dc-1c2f-43a4-9465-5cb9c63d98c8"
+severity = "high"
+tags = ["powershell"]
+type = "eql"
+
+query = '''
+process where event.type in ("start", "process_started") and process.name:("powershell.exe", "pwsh.exe") or process.parent.name:("powershell.exe","cmd.exe","wscript.exe","cscript.exe","explorer.exe")  and length(process.command_line) > 100 and process.command_line:("*enc*", "*IO.MemoryStream*", "*iex*", "*bypass*", "*GzipStream*" ,"*Decompress*" ,"*Compression*", "*MemoryStream*" ,"*DeflateStream*" ,"*FromBase64String*" ,"*ToBase64String*","*Invoke-AllChecks*","*Hidden*","*DownloadString*","*NonI*","*Invoke*","*IEX*")
+'''
+
+
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+
+[rule.threat.tactic]
+id = "TA0002"
+name = "Execution"
+reference = "https://attack.mitre.org/tactics/TA0002/"
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+[[rule.threat.technique]]
+id = "T1055"
+name = "Process Injection"
+reference = "https://attack.mitre.org/techniques/T1055/"
+
+
+[rule.threat.tactic]
+id = "TA0004"
+name = "Privilege Escalation"
+reference = "https://attack.mitre.org/tactics/TA0004/"
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+
+[rule.threat.tactic]
+id = "TA0001"
+name = "Initial Access"
+reference = "https://attack.mitre.org/tactics/TA0001/"
+

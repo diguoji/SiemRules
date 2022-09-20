@@ -7,7 +7,8 @@ Naming method my logo is used to quickly retrieve your own rules, windows/linux/
 
 目前已有规则如下:
 The current rules are as follows:
-1.针对windows平台的恶意攻击工具 Malicious attack tools for windows platform
-2.恶意powershell脚本攻击  Malicious powershell script attack
+1.针对windows平台的恶意攻击工具
+2.恶意powershell脚本攻击  
 3.挖矿检测 Mining detection
+4.家族Quasar RAT，使用office执行powershell命令释放恶意ico文件，假冒HP打印机PE
 

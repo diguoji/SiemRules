@@ -1,0 +1,29 @@
+[metadata]
+creation_date = "2022/09/20"
+maturity = "development"
+updated_date = "2022/09/20"
+
+[rule]
+author = ["zhixiang.hao"]
+description = "office RAT"
+language = "eql"
+name = "my_office_fakeHP_RAT"
+risk_score = 99
+rule_id = "310fb02e-0e7f-40e3-84c3-cec3ef82a8ea"
+severity = "critical"
+tags = ["officeRAT"]
+type = "eql"
+
+query = '''
+process where event.type in ("start", "process_started") and process.name:("cmd.exe","powershell.exe", "pwsh.exe","excel.exe") and process.args_count > 5 and  process.args : ("/K", "/min", "ping","www.facebook.com","*HP*", "*Connect.Service*", "hidden","*LoadFile*","-WindowStyle","C:\\ProgramData\\KPIPrinter1259.ico")
+'''
+
+
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+
+[rule.threat.tactic]
+id = "TA0011"
+name = "Command and Control"
+reference = "https://attack.mitre.org/tactics/TA0011/"
+

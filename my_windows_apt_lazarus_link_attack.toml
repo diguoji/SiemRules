@@ -1,0 +1,36 @@
+[metadata]
+creation_date = "2022/09/23"
+maturity = "development"
+updated_date = "2022/09/23"
+
+[rule]
+author = ["zhixiang.hao"]
+description = "apt attack"
+language = "eql"
+name = "my windows apt lazarus malware link attack"
+risk_score = 99
+rule_id = "468338ec-2f7c-41b0-b65f-42aebced8539"
+severity = "critical"
+type = "eql"
+
+query = '''
+sequence with maxspan = 5s 
+[process where event.type in ("start", "process_started") and process.name == "cmd.exe" and  process.args :("type") and process.args :("C:\\Windows\\system32\\msh*.exe>C:\\Users\\Public\\msh&ren") and  process.args :("C:\\Users\\Public\\*") and  process.args :("C:\\Users\\Public\\*") and  process.args :("*ta.exe&for") ]
+[file where event.type != "deletion" and file.path :("C:\\Users\\Public\\msh*","C:\\Users\\Public\\cscr*")] 
+[network where network.protocol == "dns" and dns.question.name:("*ms.onlineshares.cloud*","r3.o.lencr.org*")]
+'''
+
+
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+[[rule.threat.technique]]
+id = "T1059"
+name = "Command and Scripting Interpreter"
+reference = "https://attack.mitre.org/techniques/T1059/"
+
+
+[rule.threat.tactic]
+id = "TA0002"
+name = "Execution"
+reference = "https://attack.mitre.org/tactics/TA0002/"
+

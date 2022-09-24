@@ -9,6 +9,6 @@ Naming method my logo is used to quickly retrieve your own rules, windows/linux/
 1.针对windows平台的恶意攻击工具  
 2.恶意powershell脚本攻击  
 3.挖矿检测 Mining detection  
-4.家族Quasar RAT，使用office执行powershell命令释放恶意ico文件，假冒HP打印机PE  
+4.Quasar家族 RAT，使用office执行powershell命令释放恶意ico文件，假冒HP打印机PE  
 5.apt Lazarus 使用恶意link攻击  
 

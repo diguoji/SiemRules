@@ -6,7 +6,6 @@ Elastic SIEM threat rule logging, rules need to be maintained, you can contribut
 Naming method my logo is used to quickly retrieve your own rules, windows/linux/mac identifies the platform where the rules function
 
 目前已有规则如下:  
-The current rules are as follows:  
 1.针对windows平台的恶意攻击工具  
 2.恶意powershell脚本攻击  
 3.挖矿检测 Mining detection  
